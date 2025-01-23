@@ -1,12 +1,11 @@
+import 'package:bahan_konten/view/carousel.dart';
 import 'package:flutter/material.dart';
-
-import 'view/home_page.dart';
 
 void main() {
   runApp(
-    const MaterialApp(
+    MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: Carousel(),
     ),
   );
 }
