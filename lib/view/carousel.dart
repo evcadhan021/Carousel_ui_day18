@@ -1,5 +1,5 @@
-import 'package:bahan_konten/model/button_add_to_chart.dart';
-import 'package:bahan_konten/model/rating.dart';
+import 'package:carousel_ui_day18/model/button_add_to_chart.dart';
+import 'package:carousel_ui_day18/model/rating.dart';
 import 'package:flutter/material.dart';
 
 class Carousel extends StatefulWidget {
@@ -12,15 +12,15 @@ class Carousel extends StatefulWidget {
 class _CarouselState extends State<Carousel> {
   final List<List<String>> products = [
     ['assets/images/satu.jpg', 'Parfume bottle mockup', '100 \$'],
-    ['assets/images/dua.jpg', 'Hugo Boss Oxygen', '120 \$'],
-    ['assets/images/tiga.jpg', 'Shoes Rebook', '80 \$'],
+    ['assets/images/dua.jpg', 'Bag Boss Oxygen', '80 \$'],
+    ['assets/images/tiga.jpg', 'Shoes Rebook original', '120 \$'],
   ];
 
   int currentIndex = 0;
 
   void _next() {
     setState(() {
-      if (currentIndex < products.length - 1) {
+      if (currentIndex < products.length) {
         currentIndex++;
       } else {
         currentIndex = currentIndex;
@@ -77,7 +77,7 @@ class _CarouselState extends State<Carousel> {
                       width: 90,
                       margin: const EdgeInsets.only(bottom: 50),
                       child: Row(
-                        children: _buildIndicator(),
+                        children: _builderIndicator(),
                       ),
                     )
                   ],
@@ -120,15 +120,17 @@ class _CarouselState extends State<Carousel> {
                             fontSize: 20,
                           ),
                         ),
-                        const SizedBox(width: 15),
+                        const SizedBox(
+                          width: 15,
+                        ),
                         const Rating(),
                       ],
                     ),
                     const Expanded(
-                        child: Align(
-                      alignment: Alignment.bottomCenter,
-                      child: ButtonAddToChart(),
-                    ))
+                      child: Align(
+                        child: ButtonAddToChart(),
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -141,18 +143,16 @@ class _CarouselState extends State<Carousel> {
 
   Widget _indicator(bool isActive) {
     return Expanded(
-      child: Container(
-        height: 4,
-        margin: const EdgeInsets.only(right: 5),
-        decoration: BoxDecoration(
+        child: Container(
+      height: 4,
+      margin: const EdgeInsets.only(right: 5),
+      decoration: BoxDecoration(
           color: isActive ? Colors.grey[800] : Colors.white,
-          borderRadius: BorderRadius.circular(50),
-        ),
-      ),
-    );
+          borderRadius: BorderRadius.circular(50)),
+    ));
   }
 
-  List<Widget> _buildIndicator() {
+  List<Widget> _builderIndicator() {
     List<Widget> indicators = [];
     for (var i = 0; i < products.length; i++) {
       if (currentIndex == i) {
